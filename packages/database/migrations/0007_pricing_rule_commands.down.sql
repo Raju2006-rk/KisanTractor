@@ -1,0 +1,1 @@
+DROP INDEX IF EXISTS public.pricing_rules_offering_method_unique_idx;

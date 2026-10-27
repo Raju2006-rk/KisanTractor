@@ -1,0 +1,298 @@
+{
+  "schemaVersion": "kisantractor.observability.dashboard/v1",
+  "id": "operational-indicators",
+  "title": "KisanTractor operational indicators (Requirement 18.2)",
+  "status": "DEFINED_NOT_DEPLOYED",
+  "statusNote": "Version-controlled definition only. Queries use PromQL against the metric names in packages/observability/src/metrics.ts and need a metrics backend fed by a future exporter; nothing here is provisioned.",
+  "refresh": "1m",
+  "sections": [
+    {
+      "title": "API health and latency",
+      "panels": [
+        {
+          "id": "api-request-rate",
+          "title": "Requests per second by status class",
+          "indicator": "HTTP_REQUESTS",
+          "phase": 1,
+          "unit": "req/s",
+          "query": "sum by (status_class) (rate(kt_http_server_requests_total[5m]))"
+        },
+        {
+          "id": "api-error-ratio",
+          "title": "5xx ratio",
+          "indicator": "HTTP_REQUESTS",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum(rate(kt_http_server_requests_total{status_class=\"5xx\"}[5m])) / clamp_min(sum(rate(kt_http_server_requests_total[5m])), 1e-9)"
+        },
+        {
+          "id": "api-read-latency-p95",
+          "title": "p95 read latency (target < 500 ms)",
+          "indicator": "HTTP_REQUESTS",
+          "phase": 1,
+          "unit": "ms",
+          "query": "histogram_quantile(0.95, sum by (le, route) (rate(kt_http_server_request_duration_ms_bucket{method=\"GET\"}[10m])))"
+        },
+        {
+          "id": "api-write-latency-p95",
+          "title": "p95 state-changing latency (target < 800 ms)",
+          "indicator": "HTTP_REQUESTS",
+          "phase": 1,
+          "unit": "ms",
+          "query": "histogram_quantile(0.95, sum by (le, route) (rate(kt_http_server_request_duration_ms_bucket{method=~\"POST|PUT|PATCH|DELETE\"}[10m])))"
+        },
+        {
+          "id": "db-transaction-rollbacks",
+          "title": "Domain transaction rollbacks by isolation",
+          "indicator": "DOMAIN_TRANSACTIONS",
+          "phase": 1,
+          "unit": "tx/s",
+          "query": "sum by (isolation) (rate(kt_domain_transactions_total{outcome=\"ROLLED_BACK\"}[5m]))"
+        }
+      ]
+    },
+    {
+      "title": "Identity",
+      "panels": [
+        {
+          "id": "otp-request-outcomes",
+          "title": "OTP requests by outcome (THROTTLED = abuse signal)",
+          "indicator": "OTP_ABUSE_FAILURE",
+          "phase": 1,
+          "unit": "req/min",
+          "query": "sum by (outcome) (rate(kt_otp_requests_total[5m])) * 60"
+        },
+        {
+          "id": "otp-verification-failure-ratio",
+          "title": "OTP verification rejection ratio by reason",
+          "indicator": "OTP_ABUSE_FAILURE",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum by (reason) (rate(kt_otp_verifications_total{outcome=\"REJECTED\"}[15m])) / ignoring(reason) group_left clamp_min(sum(rate(kt_otp_verifications_total[15m])), 1e-9)"
+        }
+      ]
+    },
+    {
+      "title": "Discovery and booking funnel",
+      "panels": [
+        {
+          "id": "discovery-zero-result-rate",
+          "title": "Zero-result discovery rate (first pages)",
+          "indicator": "ZERO_RESULT_DISCOVERY",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum(rate(kt_discovery_searches_total{outcome=\"ZERO_RESULTS\"}[1h])) / clamp_min(sum(rate(kt_discovery_searches_total[1h])), 1e-9)"
+        },
+        {
+          "id": "booking-funnel",
+          "title": "Committed booking events by funnel stage (24h)",
+          "indicator": "BOOKING_CONVERSION",
+          "phase": 1,
+          "unit": "events",
+          "query": "sum by (stage) (increase(kt_booking_funnel_events_total[24h]))"
+        },
+        {
+          "id": "search-to-request-conversion",
+          "title": "Search-to-booking-request conversion (24h)",
+          "indicator": "BOOKING_CONVERSION",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum(increase(kt_booking_funnel_events_total{stage=\"REQUESTED\"}[24h])) / clamp_min(sum(increase(kt_discovery_searches_total{outcome=\"RESULTS\"}[24h])), 1)"
+        },
+        {
+          "id": "request-to-acceptance-conversion",
+          "title": "Request-to-acceptance conversion (24h)",
+          "indicator": "BOOKING_CONVERSION",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum(increase(kt_booking_funnel_events_total{stage=\"ACCEPTED\"}[24h])) / clamp_min(sum(increase(kt_booking_funnel_events_total{stage=\"REQUESTED\"}[24h])), 1)"
+        },
+        {
+          "id": "acceptance-conflicts",
+          "title": "Acceptance conflicts by reason",
+          "indicator": "ACCEPTANCE_CONFLICTS",
+          "phase": 1,
+          "unit": "events/h",
+          "query": "sum by (reason) (increase(kt_booking_acceptance_conflicts_total[1h]))"
+        },
+        {
+          "id": "invalid-transitions",
+          "title": "Invalid transitions by aggregate and action",
+          "indicator": "INVALID_TRANSITIONS",
+          "phase": 1,
+          "unit": "events/h",
+          "query": "sum by (aggregate, action) (increase(kt_invalid_transitions_total[1h]))"
+        }
+      ]
+    },
+    {
+      "title": "Billing and payments",
+      "panels": [
+        {
+          "id": "invoice-dispute-rate",
+          "title": "Disputes per final bill generated (7d)",
+          "indicator": "INVOICE_DISPUTES",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum(increase(kt_invoice_disputes_total[7d])) / clamp_min(sum(increase(kt_booking_funnel_events_total{stage=\"FINAL_BILL_GENERATED\"}[7d])), 1)"
+        },
+        {
+          "id": "payment-verification-failures",
+          "title": "Payment verification failures by method and reason",
+          "indicator": "PAYMENT_VERIFICATION_FAILURES",
+          "phase": 1,
+          "unit": "events/h",
+          "query": "sum by (method, reason) (increase(kt_payment_verification_failures_total[1h]))"
+        },
+        {
+          "id": "payment-recovery",
+          "title": "Pending-intent recovery and refund reconciliation by subject and outcome",
+          "indicator": "PAYMENT_VERIFICATION_FAILURES",
+          "phase": 2,
+          "unit": "events/h",
+          "query": "sum by (subject, outcome) (increase(kt_payment_recovery_total[1h]))",
+          "emptyStateNote": "Stays empty while ONLINE_PAYMENT has no provider handle; the worker runs reconciliation only then."
+        },
+        {
+          "id": "provider-callbacks",
+          "title": "Provider callbacks by capability and outcome (from Phase 2)",
+          "indicator": "PROVIDER_CALLBACKS",
+          "phase": 2,
+          "unit": "events/h",
+          "query": "sum by (capability, outcome) (increase(kt_provider_callbacks_total[1h]))",
+          "emptyStateNote": "No provider callback routes exist in Phase 1; this panel stays empty until Phase 2."
+        }
+      ]
+    },
+    {
+      "title": "Outbox delivery",
+      "panels": [
+        {
+          "id": "outbox-oldest-due-age",
+          "title": "Oldest due outbox event age",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "ms",
+          "query": "max(kt_outbox_oldest_pending_age_ms)"
+        },
+        {
+          "id": "outbox-backlog",
+          "title": "Due outbox events",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "events",
+          "query": "max(kt_outbox_backlog_events)"
+        },
+        {
+          "id": "outbox-dispatch-lag-p95",
+          "title": "p95 dispatch lag by event type",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "ms",
+          "query": "histogram_quantile(0.95, sum by (le, event_type) (rate(kt_outbox_dispatch_lag_ms_bucket[15m])))"
+        },
+        {
+          "id": "outbox-resolutions",
+          "title": "Outbox attempt resolutions",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "events/min",
+          "query": "sum by (resolution) (rate(kt_outbox_events_resolved_total[5m])) * 60"
+        },
+        {
+          "id": "outbox-dead-letters",
+          "title": "Dead-lettered events awaiting operator action",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "events",
+          "query": "max(kt_outbox_dead_letter_events)"
+        },
+        {
+          "id": "outbox-poll-failures",
+          "title": "Outbox poll failures",
+          "indicator": "OUTBOX_LAG",
+          "phase": 1,
+          "unit": "events/h",
+          "query": "sum(increase(kt_outbox_poll_failures_total[1h]))"
+        },
+        {
+          "id": "notification-deliveries",
+          "title": "Notification deliveries by channel, provider, and recorded state (from Phase 2)",
+          "indicator": "NOTIFICATION_DELIVERY",
+          "phase": 2,
+          "unit": "events/h",
+          "query": "sum by (channel, provider, outcome) (increase(kt_notification_deliveries_total[1h]))",
+          "emptyStateNote": "While MESSAGING is UNCONFIGURED, SMS and PUSH rows are NOT_SENT with provider none; DEGRADED rows are FAILED with reason CAPABILITY_DEGRADED and no provider contact."
+        },
+        {
+          "id": "notification-failure-reasons",
+          "title": "Failed and not-sent SMS/push attempts by reason",
+          "indicator": "NOTIFICATION_DELIVERY",
+          "phase": 2,
+          "unit": "events/h",
+          "query": "sum by (channel, outcome, reason) (increase(kt_notification_deliveries_total{channel=~\"SMS|PUSH\",outcome=~\"FAILED|DEAD_LETTER|NOT_SENT\"}[1h]))"
+        }
+      ]
+    },
+    {
+      "title": "Client experience",
+      "panels": [
+        {
+          "id": "translation-misses",
+          "title": "Translation misses by locale, reason, and surface",
+          "indicator": "TRANSLATION_MISSES",
+          "phase": 1,
+          "unit": "events/h",
+          "query": "sum by (locale, reason, surface) (increase(kt_translation_misses_total[1h]))"
+        },
+        {
+          "id": "web-vitals-poor-share",
+          "title": "Share of poor web-vital reports by vital and route group",
+          "indicator": "WEB_VITALS",
+          "phase": 1,
+          "unit": "ratio",
+          "query": "sum by (vital, route_group) (rate(kt_web_vitals_reports_total{rating=\"poor\"}[1h])) / clamp_min(sum by (vital, route_group) (rate(kt_web_vitals_reports_total[1h])), 1e-9)"
+        },
+        {
+          "id": "web-vitals-lcp-p75",
+          "title": "p75 LCP by route group",
+          "indicator": "WEB_VITALS",
+          "phase": 1,
+          "unit": "ms",
+          "query": "histogram_quantile(0.75, sum by (le, route_group) (rate(kt_web_vital_duration_ms_bucket{vital=\"LCP\"}[1h])))"
+        },
+        {
+          "id": "web-vitals-cls-p75",
+          "title": "p75 CLS by route group",
+          "indicator": "WEB_VITALS",
+          "phase": 1,
+          "unit": "score",
+          "query": "histogram_quantile(0.75, sum by (le, route_group) (rate(kt_web_vital_cls_bucket[1h])))"
+        }
+      ]
+    },
+    {
+      "title": "Later-phase indicators (contracts only)",
+      "panels": [
+        {
+          "id": "ivr-abandonment-rate",
+          "title": "IVR abandonment rate by last prompt step",
+          "indicator": "IVR_ABANDONMENT",
+          "phase": 3,
+          "unit": "ratio",
+          "query": "sum by (last_step) (increase(kt_ivr_calls_total{outcome=\"ABANDONED\"}[24h])) / ignoring(last_step) group_left clamp_min(sum(increase(kt_ivr_calls_total[24h])), 1)",
+          "emptyStateNote": "Phase 3. No IVR channel exists yet, so no data is emitted; do not backfill or simulate."
+        },
+        {
+          "id": "landing-3d-fallback-rate",
+          "title": "Landing 3D fallback rate",
+          "indicator": "LANDING_3D_FALLBACK",
+          "phase": 4,
+          "unit": "ratio",
+          "query": "sum(increase(kt_landing_3d_outcomes_total{outcome!=\"LOADED\"}[24h])) / clamp_min(sum(increase(kt_landing_3d_outcomes_total[24h])), 1)",
+          "emptyStateNote": "No terminal landing 3D outcomes were reported in the selected 24-hour window."
+        }
+      ]
+    }
+  ]
+}

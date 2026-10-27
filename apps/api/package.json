@@ -1,0 +1,39 @@
+{
+  "name": "@kisantractor/api",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx watch src/main.ts",
+    "predev": "corepack pnpm --filter @kisantractor/config build",
+    "start": "node dist/main.js",
+    "worker": "node dist/outbox-worker.js",
+    "db": "node dist/database-cli.js",
+    "db:dev": "tsx src/database-cli.ts",
+    "support-admin": "node dist/support-admin-cli.js",
+    "support-admin:dev": "tsx src/support-admin-cli.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@kisantractor/config": "workspace:*",
+    "@kisantractor/database": "workspace:*",
+    "@kisantractor/domain": "workspace:*",
+    "@kisantractor/i18n": "workspace:*",
+    "@kisantractor/observability": "workspace:*",
+    "@kisantractor/providers": "workspace:*",
+    "@nestjs/common": "12.2.0",
+    "@nestjs/core": "12.2.0",
+    "@nestjs/platform-express": "12.2.0",
+    "pg": "8.16.3",
+    "reflect-metadata": "0.2.2",
+    "rxjs": "7.8.2"
+  },
+  "devDependencies": {
+    "@kisantractor/test-utils": "workspace:*",
+    "@types/node": "24.10.1",
+    "@types/pg": "8.15.5",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

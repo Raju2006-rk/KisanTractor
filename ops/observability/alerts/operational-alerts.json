@@ -1,0 +1,276 @@
+{
+  "schemaVersion": "kisantractor.observability.alerts/v1",
+  "id": "operational-alerts",
+  "status": "DEFINED_NOT_DEPLOYED",
+  "statusNote": "Version-controlled rule definitions in PromQL against packages/observability/src/metrics.ts. They are not loaded into any alert manager yet. Alerts notify people; they never change booking, payment, or capability state.",
+  "severityPolicy": {
+    "critical": "Page the on-call engineer; start the incident-response procedure.",
+    "warning": "Notify the operations channel; investigate within business hours.",
+    "info": "Ticket for the owning team; no notification outside business hours."
+  },
+  "rules": [
+    {
+      "id": "ApiErrorRateHigh",
+      "indicator": "HTTP_REQUESTS",
+      "phase": 1,
+      "severity": "critical",
+      "expr": "sum(rate(kt_http_server_requests_total{status_class=\"5xx\"}[5m])) / clamp_min(sum(rate(kt_http_server_requests_total[5m])), 1e-9) > 0.02 and sum(rate(kt_http_server_requests_total[5m])) > 0.2",
+      "for": "5m",
+      "summary": "More than 2% of API requests are failing with 5xx.",
+      "runbook": "ops/runbooks/alerts.md#apierrorratehigh"
+    },
+    {
+      "id": "ApiReadLatencyP95High",
+      "indicator": "HTTP_REQUESTS",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(kt_http_server_request_duration_ms_bucket{method=\"GET\"}[10m]))) > 500",
+      "for": "15m",
+      "summary": "p95 read latency is above the 500 ms target (Requirement 18.4).",
+      "runbook": "ops/runbooks/alerts.md#apilatencyhigh"
+    },
+    {
+      "id": "ApiWriteLatencyP95High",
+      "indicator": "HTTP_REQUESTS",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "histogram_quantile(0.95, sum by (le) (rate(kt_http_server_request_duration_ms_bucket{method=~\"POST|PUT|PATCH|DELETE\"}[10m]))) > 800",
+      "for": "15m",
+      "summary": "p95 state-changing latency is above the 800 ms target (Requirement 18.4).",
+      "runbook": "ops/runbooks/alerts.md#apilatencyhigh"
+    },
+    {
+      "id": "OtpThrottleSpike",
+      "indicator": "OTP_ABUSE_FAILURE",
+      "phase": 1,
+      "severity": "warning",
+      "capability": "OTP",
+      "expr": "sum(rate(kt_otp_requests_total{outcome=\"THROTTLED\"}[10m])) / clamp_min(sum(rate(kt_otp_requests_total[10m])), 1e-9) > 0.2 and sum(rate(kt_otp_requests_total[10m])) > 0.05",
+      "for": "10m",
+      "summary": "More than 20% of OTP requests hit phone or requester throttles; possible enumeration or SMS-pumping abuse.",
+      "runbook": "ops/runbooks/alerts.md#otpthrottlespike"
+    },
+    {
+      "id": "OtpVerificationFailureRateHigh",
+      "indicator": "OTP_ABUSE_FAILURE",
+      "phase": 1,
+      "severity": "warning",
+      "capability": "OTP",
+      "expr": "sum(rate(kt_otp_verifications_total{outcome=\"REJECTED\"}[15m])) / clamp_min(sum(rate(kt_otp_verifications_total[15m])), 1e-9) > 0.5 and sum(rate(kt_otp_verifications_total[15m])) > 0.05",
+      "for": "15m",
+      "summary": "More than half of OTP verifications are rejected.",
+      "runbook": "ops/runbooks/alerts.md#otpverificationfailureratehigh"
+    },
+    {
+      "id": "OtpDeliveryFailing",
+      "indicator": "OTP_ABUSE_FAILURE",
+      "phase": 1,
+      "severity": "critical",
+      "capability": "OTP",
+      "expr": "sum(increase(kt_otp_requests_total{outcome=\"DELIVERY_FAILED\"}[15m])) > 5",
+      "for": "5m",
+      "summary": "The OTP provider is failing to deliver codes; the OTP capability is degraded.",
+      "runbook": "ops/runbooks/alerts.md#otpdeliveryfailing"
+    },
+    {
+      "id": "ZeroResultDiscoveryHigh",
+      "indicator": "ZERO_RESULT_DISCOVERY",
+      "phase": 1,
+      "severity": "info",
+      "expr": "sum(rate(kt_discovery_searches_total{outcome=\"ZERO_RESULTS\"}[1h])) / clamp_min(sum(rate(kt_discovery_searches_total[1h])), 1e-9) > 0.5 and sum(increase(kt_discovery_searches_total[1h])) > 20",
+      "for": "1h",
+      "summary": "More than half of first-page searches return no Tractors.",
+      "runbook": "ops/runbooks/alerts.md#zeroresultdiscoveryhigh"
+    },
+    {
+      "id": "BookingAcceptanceConversionLow",
+      "indicator": "BOOKING_CONVERSION",
+      "phase": 1,
+      "severity": "info",
+      "expr": "sum(increase(kt_booking_funnel_events_total{stage=\"ACCEPTED\"}[6h])) / clamp_min(sum(increase(kt_booking_funnel_events_total{stage=\"REQUESTED\"}[6h])), 1) < 0.2 and sum(increase(kt_booking_funnel_events_total{stage=\"REQUESTED\"}[6h])) >= 20",
+      "for": "1h",
+      "summary": "Fewer than 20% of booking requests were accepted in the last 6 hours.",
+      "runbook": "ops/runbooks/alerts.md#bookingacceptanceconversionlow"
+    },
+    {
+      "id": "AcceptanceConflictsElevated",
+      "indicator": "ACCEPTANCE_CONFLICTS",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "sum(increase(kt_booking_acceptance_conflicts_total[30m])) > 10",
+      "for": "10m",
+      "summary": "Owner acceptances are repeatedly refused because intervals or versions changed.",
+      "runbook": "ops/runbooks/alerts.md#acceptanceconflictselevated"
+    },
+    {
+      "id": "InvalidTransitionsElevated",
+      "indicator": "INVALID_TRANSITIONS",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "sum by (aggregate) (increase(kt_invalid_transitions_total[30m])) > 25",
+      "for": "10m",
+      "summary": "Clients are sending many commands the current booking or job state does not allow.",
+      "runbook": "ops/runbooks/alerts.md#invalidtransitionselevated"
+    },
+    {
+      "id": "InvoiceDisputeRateHigh",
+      "indicator": "INVOICE_DISPUTES",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "sum(increase(kt_invoice_disputes_total[24h])) / clamp_min(sum(increase(kt_booking_funnel_events_total{stage=\"FINAL_BILL_GENERATED\"}[24h])), 1) > 0.1 and sum(increase(kt_invoice_disputes_total[24h])) >= 3",
+      "for": "1h",
+      "summary": "More than 10% of final bills were disputed in the last 24 hours.",
+      "runbook": "ops/runbooks/alerts.md#invoicedisputeratehigh"
+    },
+    {
+      "id": "PaymentIntegrityFailure",
+      "indicator": "PAYMENT_VERIFICATION_FAILURES",
+      "phase": 1,
+      "severity": "critical",
+      "expr": "sum(increase(kt_payment_verification_failures_total{reason=~\"PAYMENT_LEDGER_INCONSISTENT|SIGNATURE_INVALID|AMOUNT_MISMATCH|CURRENCY_MISMATCH|REFERENCE_MISMATCH|RECONCILIATION_MISMATCH\"}[15m])) > 0",
+      "for": "0m",
+      "summary": "A payment was refused for a ledger inconsistency, a provider-evidence mismatch, or a reconciliation disagreement.",
+      "runbook": "ops/runbooks/alerts.md#paymentintegrityfailure"
+    },
+    {
+      "id": "PaymentRefundFailed",
+      "indicator": "PAYMENT_VERIFICATION_FAILURES",
+      "phase": 2,
+      "severity": "warning",
+      "capability": "ONLINE_PAYMENT",
+      "expr": "sum(increase(kt_payment_recovery_total{subject=\"REFUND\",outcome=\"REFUND_FAILED\"}[1h])) > 0",
+      "for": "0m",
+      "summary": "The payment provider could not process a refund; the money stays applied to the bill until support acts.",
+      "runbook": "ops/runbooks/alerts.md#paymentrefundfailed"
+    },
+    {
+      "id": "PaymentReconciliationErrors",
+      "indicator": "PAYMENT_VERIFICATION_FAILURES",
+      "phase": 2,
+      "severity": "warning",
+      "capability": "ONLINE_PAYMENT",
+      "expr": "sum(increase(kt_payment_recovery_total{outcome=\"PROVIDER_ERROR\"}[30m])) > 5",
+      "for": "10m",
+      "summary": "Pending-intent recovery or refund reconciliation cannot reach the payment provider.",
+      "runbook": "ops/runbooks/alerts.md#paymentreconciliationerrors"
+    },
+    {
+      "id": "PaymentVerificationFailuresElevated",
+      "indicator": "PAYMENT_VERIFICATION_FAILURES",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "sum(increase(kt_payment_verification_failures_total[1h])) > 20",
+      "for": "15m",
+      "summary": "Many payment records are being refused by verification rules.",
+      "runbook": "ops/runbooks/alerts.md#paymentverificationfailureselevated"
+    },
+    {
+      "id": "OutboxLagHigh",
+      "indicator": "OUTBOX_LAG",
+      "phase": 1,
+      "severity": "critical",
+      "capability": "MESSAGING",
+      "expr": "max(kt_outbox_oldest_pending_age_ms) > 300000",
+      "for": "5m",
+      "summary": "The oldest due outbox event has waited more than 5 minutes; notifications are delayed.",
+      "runbook": "ops/runbooks/alerts.md#outboxlaghigh"
+    },
+    {
+      "id": "OutboxWorkerSilent",
+      "indicator": "OUTBOX_LAG",
+      "phase": 1,
+      "severity": "critical",
+      "expr": "absent(kt_outbox_backlog_events)",
+      "for": "10m",
+      "summary": "No outbox worker has reported backlog samples; the worker may be down.",
+      "runbook": "ops/runbooks/alerts.md#outboxworkersilent"
+    },
+    {
+      "id": "OutboxDeadLetters",
+      "indicator": "OUTBOX_LAG",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "max(kt_outbox_dead_letter_events) > 0",
+      "for": "15m",
+      "summary": "Outbox events are dead-lettered and need operator review.",
+      "runbook": "ops/runbooks/alerts.md#outboxdeadletters"
+    },
+    {
+      "id": "OutboxPollFailing",
+      "indicator": "OUTBOX_LAG",
+      "phase": 1,
+      "severity": "warning",
+      "expr": "sum(increase(kt_outbox_poll_failures_total[10m])) > 3",
+      "for": "5m",
+      "summary": "The outbox worker cannot poll the database.",
+      "runbook": "ops/runbooks/alerts.md#outboxpollfailing"
+    },
+    {
+      "id": "NotificationDeliveryFailing",
+      "indicator": "NOTIFICATION_DELIVERY",
+      "phase": 2,
+      "severity": "warning",
+      "capability": "MESSAGING",
+      "expr": "sum by (channel) (rate(kt_notification_deliveries_total{channel=~\"SMS|PUSH\",outcome=~\"FAILED|DEAD_LETTER\",reason!=\"CAPABILITY_DEGRADED\"}[15m])) / clamp_min(sum by (channel) (rate(kt_notification_deliveries_total{channel=~\"SMS|PUSH\",reason!=\"CAPABILITY_DEGRADED\"}[15m])), 1e-9) > 0.2 and sum by (channel) (rate(kt_notification_deliveries_total{channel=~\"SMS|PUSH\",reason!=\"CAPABILITY_DEGRADED\"}[15m])) > 0.05",
+      "for": "15m",
+      "summary": "More than 20% of SMS or push attempts are failing at the provider; consider setting MESSAGING to DEGRADED. Domain state is unaffected and in-app notifications continue.",
+      "runbook": "ops/runbooks/messaging.md#notificationdeliveryfailing"
+    },
+    {
+      "id": "SmsTemplateNotRegistered",
+      "indicator": "NOTIFICATION_DELIVERY",
+      "phase": 2,
+      "severity": "warning",
+      "capability": "MESSAGING",
+      "expr": "sum(increase(kt_notification_deliveries_total{channel=\"SMS\",outcome=\"NOT_SENT\",reason=\"SMS_TEMPLATE_NOT_REGISTERED\"}[1h])) > 0",
+      "for": "0m",
+      "summary": "An SMS was not sent because its template, version, and locale have no MSG91/DLT registration in MSG91_TEMPLATE_IDS.",
+      "runbook": "ops/runbooks/messaging.md#smstemplatenotregistered"
+    },
+    {
+      "id": "TranslationMissesElevated",
+      "indicator": "TRANSLATION_MISSES",
+      "phase": 1,
+      "severity": "info",
+      "expr": "sum by (locale) (increase(kt_translation_misses_total{reason!=\"UNSUPPORTED_LOCALE\"}[1h])) > 50",
+      "for": "1h",
+      "summary": "Users are seeing English fallbacks for a supported locale.",
+      "runbook": "ops/runbooks/alerts.md#translationmisseselevated"
+    },
+    {
+      "id": "WebVitalsPoor",
+      "indicator": "WEB_VITALS",
+      "phase": 1,
+      "severity": "info",
+      "expr": "sum by (vital) (rate(kt_web_vitals_reports_total{vital=~\"LCP|INP|CLS\",rating=\"poor\"}[1h])) / clamp_min(sum by (vital) (rate(kt_web_vitals_reports_total{vital=~\"LCP|INP|CLS\"}[1h])), 1e-9) > 0.25",
+      "for": "2h",
+      "summary": "More than a quarter of Core Web Vital reports are rated poor.",
+      "runbook": "ops/runbooks/alerts.md#webvitalspoor"
+    },
+    {
+      "id": "IvrAbandonmentHigh",
+      "indicator": "IVR_ABANDONMENT",
+      "phase": 3,
+      "enabled": false,
+      "enableWhen": "Phase 3 telephony readiness passes and the IVR channel emits kt_ivr_calls_total.",
+      "severity": "warning",
+      "capability": "TELEPHONY",
+      "expr": "sum(increase(kt_ivr_calls_total{outcome=\"ABANDONED\"}[1h])) / clamp_min(sum(increase(kt_ivr_calls_total[1h])), 1) > 0.3 and sum(increase(kt_ivr_calls_total[1h])) >= 20",
+      "for": "30m",
+      "summary": "More than 30% of IVR calls are abandoned.",
+      "runbook": "ops/runbooks/alerts.md#ivrabandonmenthigh"
+    },
+    {
+      "id": "Landing3dFallbackRateHigh",
+      "indicator": "LANDING_3D_FALLBACK",
+      "phase": 4,
+      "enabled": false,
+      "enableWhen": "Phase 4 operational approval enables paging; telemetry and dashboard measurement are already active.",
+      "severity": "info",
+      "expr": "sum(increase(kt_landing_3d_outcomes_total{outcome=~\"FAILED|TIMED_OUT\"}[24h])) / clamp_min(sum(increase(kt_landing_3d_outcomes_total[24h])), 1) > 0.2",
+      "for": "1h",
+      "summary": "More than 20% of 3D landing loads fail or time out (capability-based fallbacks excluded).",
+      "runbook": "ops/runbooks/alerts.md#landing3dfallbackratehigh"
+    }
+  ]
+}

@@ -1,0 +1,262 @@
+{
+  "schemaVersion": "kisantractor.release.readiness/v1",
+  "release": "phase-1",
+  "statusNote": "Machine-readable form of ops/release/production-readiness.md. `corepack pnpm release:check` evaluates it against the production configuration and refuses the release while any blocking gate is PENDING or any configured LIVE capability lacks its six readiness checks (Requirement 18.7). PASSED means the evidence listed was produced and reviewed on `verifiedOn`; it is never set for work that has not happened.",
+  "gates": [
+    {
+      "id": "ADDITIVE_MIGRATIONS",
+      "requirements": ["18.5"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "Static additivity scan and catalog diff of every up migration, down/up round-trips, and roll-forward over Phase 1 data from 0008, run against PostGIS 17-3.5 in a local container.",
+      "evidencePaths": [
+        "packages/database/src/migration-additivity.test.ts",
+        "packages/database/src/migration-policy.ts",
+        "apps/api/src/release/migrations.integration.test.ts"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "STABLE_REFERENCE_IDENTIFIERS",
+      "requirements": ["18.5"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "Canonical Services and Equipment Types have pinned UUIDs and codes; the seed is idempotent, repairs renamed display names in place, and refuses identity drift (local PostGIS run).",
+      "evidencePaths": [
+        "packages/database/src/reference-data.ts",
+        "packages/database/src/reference-data.test.ts",
+        "apps/api/src/release/reference-data.integration.test.ts"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "ROLL_FORWARD_AND_LOCAL_RESTORE_DRILL",
+      "requirements": ["12.7", "18.5"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "pg_dump/pg_restore drill of the current release and of a 0008 backup rolled forward with the migration runner; every row checksum, trigger, constraint, and integrity invariant matched (local PostGIS container, about 2.4 s for 143 rows). This is a drill of the procedure, not of production backups.",
+      "evidencePaths": [
+        "apps/api/src/release/backup-restore.integration.test.ts",
+        "apps/api/src/operations/backup-restore-drill.ts",
+        "packages/database/src/schema-migrations.ts",
+        "packages/database/src/database-integrity.ts",
+        "ops/runbooks/backup-restore.md"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "PRODUCTION_BACKUPS_CONFIGURED",
+      "requirements": ["12.1", "12.7"],
+      "kind": "OPERATIONAL",
+      "blocking": true,
+      "status": "PENDING",
+      "evidence": "",
+      "evidencePaths": ["ops/runbooks/backup-restore.md"],
+      "owner": "Operations",
+      "note": "Point-in-time recovery (WAL archiving plus daily base backups) on the managed database, encrypted, stored in a separate account or region, with failure alerts. Nothing in this repository provisions it."
+    },
+    {
+      "id": "STAGING_RESTORE_DRILL",
+      "requirements": ["12.7", "18.5"],
+      "kind": "OPERATIONAL",
+      "blocking": true,
+      "status": "PENDING",
+      "evidence": "",
+      "evidencePaths": ["ops/runbooks/backup-restore.md"],
+      "owner": "Operations",
+      "note": "Restore a real production-like backup into an isolated environment, run `db verify` and the drill comparison, and record the measured RTO and RPO against the targets."
+    },
+    {
+      "id": "ACCOUNT_DELETION",
+      "requirements": ["12.5"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "POST /account/deletion erases or anonymizes personal data in one serializable transaction and leaves bookings, agreements, history, invoices, payments, and audit rows byte-identical; a whole-database scan finds no residual personal data (local PostGIS run).",
+      "evidencePaths": [
+        "apps/api/src/account/postgres-account-deletion-store.ts",
+        "apps/api/src/account/account-deletion.service.test.ts",
+        "apps/api/src/release/account-deletion.integration.test.ts",
+        "ops/runbooks/account-deletion.md"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "RETENTION_AND_DELETION_POLICY_REVIEW",
+      "requirements": ["12.4", "12.5", "12.6"],
+      "kind": "OPERATIONAL",
+      "blocking": true,
+      "status": "PENDING",
+      "evidence": "",
+      "evidencePaths": ["ops/runbooks/account-deletion.md"],
+      "owner": "Legal",
+      "note": "Legal review of what account deletion retains (agreement service location, invoices, payments, audit) and for how long, and of the published privacy notice."
+    },
+    {
+      "id": "ALERT_RULES_TESTED",
+      "requirements": ["12.7", "18.2"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "Every enabled alert rule fires on its threshold scenario and stays quiet below it, with its `for` hold, evaluated against series scraped from the real metric registry.",
+      "evidencePaths": [
+        "packages/observability/src/alert-rules.test.ts",
+        "packages/observability/src/alert-evaluation.ts",
+        "packages/observability/src/ops-config.test.ts",
+        "ops/observability/alerts/operational-alerts.json"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "MONITORING_DEPLOYED",
+      "requirements": ["12.7", "18.1", "18.2"],
+      "kind": "OPERATIONAL",
+      "blocking": true,
+      "status": "PENDING",
+      "evidence": "",
+      "evidencePaths": ["ops/runbooks/error-monitoring.md", "ops/observability/README.md"],
+      "owner": "Operations",
+      "note": "A log store, a metrics pipeline (an OTLP or Prometheus exporter is not implemented yet), and an alert manager with these rules loaded; a test alert reached the on-call rotation."
+    },
+    {
+      "id": "INCIDENT_RESPONSE_READY",
+      "requirements": ["12.7"],
+      "kind": "OPERATIONAL",
+      "blocking": true,
+      "status": "PENDING",
+      "evidence": "",
+      "evidencePaths": ["ops/runbooks/incident-response.md"],
+      "owner": "Operations",
+      "note": "Incident lead, operations, communications, and scribe assigned with contacts; one SEV1 data tabletop and one provider-outage tabletop run and recorded."
+    },
+    {
+      "id": "CAPABILITY_ROLLBACK_TESTED",
+      "requirements": ["14.2", "14.4", "18.7"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "Every capability rolls back from SANDBOX or LIVE to DEGRADED or UNCONFIGURED by configuration alone; OTP, private documents, and notification delivery keep committed state and call no provider after the rollback.",
+      "evidencePaths": [
+        "apps/api/src/release/capability-rollback.test.ts",
+        "apps/api/src/identity/identity.service.test.ts",
+        "apps/api/src/catalog/document.service.test.ts",
+        "apps/api/src/notification/notification.service.test.ts"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "SECURITY_SUITE",
+      "requirements": ["2.1", "2.3", "4.5", "4.6", "12.1", "12.2", "12.3"],
+      "kind": "AUTOMATED",
+      "blocking": true,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "HTTP-boundary security tests (default suite) and the PostgreSQL security end-to-end suite (task 15.2), including the account-deletion route.",
+      "evidencePaths": [
+        "apps/api/src/security/http-boundary.security.test.ts",
+        "apps/api/src/e2e/security.e2e.test.ts"
+      ],
+      "owner": "Engineering"
+    },
+    {
+      "id": "INITIAL_LOAD_PROFILE",
+      "requirements": ["18.3", "18.4"],
+      "kind": "AUTOMATED",
+      "blocking": false,
+      "status": "PASSED",
+      "verifiedOn": "2026-10-26",
+      "evidence": "Recorded by task 15.3 against the planning load profile; see the results document for budgets met and open items.",
+      "evidencePaths": ["ops/performance/initial-load-profile.md", "apps/api/src/performance/load.performance.test.ts"],
+      "owner": "Engineering"
+    }
+  ],
+  "capabilities": {
+    "OTP": {
+      "requiredForLaunch": true,
+      "liveAdapterAvailable": false,
+      "note": "Without a LIVE OTP provider nobody can sign in to production. Phase 1 ships only the labelled local-development adapter, which production refuses.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    },
+    "MAPS_GEOCODING": {
+      "requiredForLaunch": false,
+      "liveAdapterAvailable": false,
+      "note": "Manual administrative location entry works without it.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    },
+    "ONLINE_PAYMENT": {
+      "requiredForLaunch": false,
+      "liveAdapterAvailable": true,
+      "note": "Phase 2 (tasks 16.1, 16.2). The Razorpay adapter runs LIVE with a rzp_live_ key in staging or production, so a live adapter exists; every check below is still PENDING. Repository evidence so far is contract tests against local signed fixtures and an in-process fake of the Orders, Payments, and Refunds APIs with synthetic credentials (packages/providers/src/razorpay-payment-adapter.test.ts, apps/api/src/payment/online-payment.*.test.ts, apps/api/src/payment/payment-recovery.*.test.ts); no real sandbox or live credentials have been used, and the checkout launcher's CSP has not been checked against a real Razorpay checkout. Refunds stay unavailable until a support access policy is configured (task 16.5). See ops/runbooks/online-payments.md. Cash recording does not depend on it.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    },
+    "MESSAGING": {
+      "requiredForLaunch": false,
+      "liveAdapterAvailable": true,
+      "note": "Phase 2 (task 16.4). MSG91 (SMS, DLT-registered templates through the Flow API) and Firebase Cloud Messaging HTTP v1 (push) run LIVE in staging or production, so a live adapter exists; every check below is still PENDING. Repository evidence so far is contract tests against local fixtures with synthetic credentials (packages/providers/src/messaging-adapters.test.ts) and the notification and rollback tests; no request has reached MSG91 or FCM, no DLT template is registered, and MSG91_TEMPLATE_IDS is empty everywhere. MSG91 delivery reports are unsigned and not accepted, so SENT means provider-accepted only. While UNCONFIGURED, notifications are recorded as NOT_SENT and in-app delivery continues. See ops/runbooks/messaging.md.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    },
+    "OBJECT_STORAGE": {
+      "requiredForLaunch": false,
+      "liveAdapterAvailable": false,
+      "note": "Before LIVE: a consumer of AccountErased outbox events must delete erased Owners' stored objects (including events already published), and the malware scanner must be configured.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    },
+    "TELEPHONY": {
+      "requiredForLaunch": false,
+      "liveAdapterAvailable": false,
+      "note": "Phase 3. The public booking number stays hidden until LIVE.",
+      "checks": {
+        "SECURITY": { "status": "PENDING", "evidence": "" },
+        "CONTRACT": { "status": "PENDING", "evidence": "" },
+        "SANDBOX": { "status": "PENDING", "evidence": "" },
+        "FAILURE_MODE": { "status": "PENDING", "evidence": "" },
+        "OPERATIONAL": { "status": "PENDING", "evidence": "" },
+        "ROLLBACK": { "status": "PENDING", "evidence": "" }
+      }
+    }
+  }
+}

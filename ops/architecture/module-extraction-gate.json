@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "kisantractor.module-extraction-readiness/v1",
+  "approvalStatus": "BLOCKED",
+  "authoritativeWriter": "MODULAR_MONOLITH",
+  "requirements": ["18.3", "18.4", "18.5", "18.6"],
+  "consistencyCell": ["BOOKING", "INVOICE", "PAYMENT"],
+  "invariants": [
+    "BOOKING_AGREEMENT_IMMUTABLE",
+    "INVOICE_AGREEMENT_LINK",
+    "INVOICE_REPRODUCIBLE",
+    "PAYMENT_CONSERVATION",
+    "COMPLETION_REQUIRES_SETTLEMENT",
+    "PROVIDER_EVIDENCE_IDEMPOTENT"
+  ],
+  "gates": [
+    {
+      "id": "OWNERSHIP_BOUNDARY",
+      "evidence": ["ops/architecture/module-extraction.md"]
+    },
+    {
+      "id": "VERSIONED_CONTRACT",
+      "evidence": ["packages/database/src/outbox.ts", "apps/api/src/release/module-extraction-readiness.test.ts"]
+    },
+    {
+      "id": "OUTBOX_IDEMPOTENCY",
+      "evidence": ["apps/api/src/outbox/outbox-worker.ts", "apps/api/src/release/module-extraction-readiness.test.ts"]
+    },
+    {
+      "id": "RECONCILIATION",
+      "evidence": ["apps/api/src/payment/payment-reconciliation-job.ts", "apps/api/src/release/module-extraction-readiness.test.ts"]
+    },
+    {
+      "id": "ROLLBACK",
+      "evidence": ["ops/runbooks/module-extraction.md", "apps/api/src/release/module-extraction-readiness.test.ts"]
+    },
+    {
+      "id": "BOUNDED_CURSOR_QUERIES",
+      "evidence": ["ops/architecture/module-extraction.md", "ops/runbooks/module-extraction.md"]
+    },
+    {
+      "id": "LATENCY_BUDGET",
+      "evidence": ["ops/performance/initial-load-profile.md", "ops/runbooks/module-extraction.md"]
+    }
+  ],
+  "contractPolicy": {
+    "envelopeVersionField": "eventVersion",
+    "compatibility": "ADDITIVE_WITHIN_MAJOR",
+    "unsupportedMajor": "REJECT_WITHOUT_MUTATION_AND_DEAD_LETTER",
+    "delivery": "AT_LEAST_ONCE",
+    "consumerDeduplicationKey": "outboxEventId"
+  },
+  "reconciliationPolicy": {
+    "cursor": ["updatedAt", "id"],
+    "bounded": true,
+    "requiredConsecutiveCleanPasses": 3,
+    "allowedMismatchCount": 0,
+    "sameVersionDivergence": "BLOCK_CUTOVER"
+  },
+  "performanceBudgetMs": {
+    "readP95Exclusive": 500,
+    "stateChangeP95Exclusive": 800
+  },
+  "rollbackPolicy": {
+    "beforeCommandCutover": "ROUTE_TO_MONOLITH_AND_REBUILD_SHADOW",
+    "afterCommandCutoverRequires": "PROVEN_REVERSE_SYNCHRONIZATION",
+    "destructiveDownMigrationAllowed": false
+  }
+}

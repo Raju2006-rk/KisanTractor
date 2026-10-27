@@ -1,0 +1,32 @@
+{
+  "name": "@kisantractor/web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "predev": "corepack pnpm --filter @kisantractor/config build && corepack pnpm env:check",
+    "env:check": "tsx scripts/validate-env.ts",
+    "start": "next start",
+    "test:budgets": "tsx quality/run-budget-checks.ts",
+    "test:landing": "tsx quality/run-landing-checks.ts",
+    "prestart": "corepack pnpm env:check",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@kisantractor/config": "workspace:*",
+    "@kisantractor/domain": "workspace:*",
+    "@kisantractor/i18n": "workspace:*",
+    "@kisantractor/observability": "workspace:*",
+    "next": "16.4.3",
+    "react": "19.3.1",
+    "react-dom": "19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}

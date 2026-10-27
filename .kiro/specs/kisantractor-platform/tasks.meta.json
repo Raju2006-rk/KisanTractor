@@ -1,0 +1,2474 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Create the monorepo applications and packages for the responsive web/PWA, shared domain, backend API, database access, provider adapters, localization catalogs, and test utilities.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431168
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861451312
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862098582
+      }
+    ],
+    "1.2 Implement the provider capability registry and client-safe capability projection.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431415
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862112255
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862385868
+      }
+    ],
+    "1.3 Write property tests for capability honesty.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431608
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862399199
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862593770
+      }
+    ],
+    "2.1 Create migrations for users, profiles, roles, locations, tractors, documents, equipment, service offerings, pricing rules, availability, bookings, recipients, status history, work evidence, invoices, payments, provider events, notifications, IVR sessions, idempotency records, audit events, and outbox events.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431700
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862607997
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863003389
+      }
+    ],
+    "2.2 Add phone/registration lookup hashes, public reference uniqueness, provider-event uniqueness, idempotency-scope uniqueness, geospatial indexes, bounded-query indexes, and the same-Tractor scheduling exclusion constraint.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431820
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863017286
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863491921
+      }
+    ],
+    "2.3 Implement transaction helpers, optimistic concurrency, transactional outbox storage, PII-safe audit writing, and test database factories.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431901
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863507513
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863908147
+      }
+    ],
+    "3.1 Implement phone normalization, hashed expiring OTP challenges, request/attempt throttles, purpose binding, explicit local-development OTP adapter, session issuance/refresh/revocation, and role membership.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861431988
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863922202
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792864630876
+      }
+    ],
+    "3.2 Implement server authorization policies for Farmer bookings, Owner Tractors/assigned bookings, public redacted views, private documents, and future support access.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432061
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792864644846
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792864942737
+      }
+    ],
+    "3.3 Write property tests for role isolation and redaction.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432142
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792864956021
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865183404
+      }
+    ],
+    "4.1 Implement translation catalogs and formatting for Telugu, Hindi, English, Kannada, and Tamil with English fallback and missing-key telemetry.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432228
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865199083
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865506130
+      }
+    ],
+    "4.2 Write property tests for localization fallback completeness.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432308
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865532834
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865852614
+      }
+    ],
+    "4.3 Build green/cream visual tokens and reusable accessible controls, cards, status chips, forms, dialogs, steppers, navigation, empty states, and error states based on the showcase.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432393
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865867426
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792866763349
+      }
+    ],
+    "4.4 Implement public, Farmer, and Owner route shells with server-authorized loaders and role-specific navigation.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432473
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792866776921
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792867525581
+      }
+    ],
+    "5.1 Build Owner profile and multi-Tractor commands, validation, APIs, and screens for identity, operating location, Tractor attributes, photos, and registration data.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432549
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792867540069
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792869099973
+      }
+    ],
+    "5.2 Build Equipment inventory, Tractor assignment, Service Offering management, and eligibility evaluation.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432647
+      },
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792869115237
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792911109920
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792911798334
+      }
+    ],
+    "5.3 Implement private upload grants, metadata persistence, MIME/signature/size validation, scanning state, encrypted object access, and short-lived authorized download grants.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432724
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792911814287
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792912289269
+      }
+    ],
+    "5.4 Add API, component, and accessibility tests for Owner onboarding and catalog workflows.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432801
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792912303001
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792912686264
+      }
+    ],
+    "6.1 Implement Pricing Rule commands and Owner UI for hourly, per-acre, and per-trip rates by Service Offering and Equipment.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861432889
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792912706138
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792913708695
+      }
+    ],
+    "6.2 Implement active Pricing Rule queries, Farmer-visible method selection, estimate calculation, and immutable Quote Snapshot creation.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433052
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792913724893
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792914390918
+      }
+    ],
+    "6.3 Implement per-Tractor online/offline commands, eligibility rechecks, audit events, and cross-client refresh/realtime projection.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433151
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792914406780
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792915117878
+      }
+    ],
+    "6.4 Write property tests for offline behavior and Quote Snapshot immutability.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433247
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792915134158
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792915339241
+      }
+    ],
+    "7.1 Implement normalized Location records and manual state/district/mandal-or-taluk/village/landmark entry, consented browser GPS capture, freshness policy, and provider-gated map/geocoding adapters.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433344
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792915358050
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792916190634
+      }
+    ],
+    "7.2 Implement bounded, cursor-paginated radius search using Service Location, online/eligibility state, Service Offering, Equipment, active pricing, and interval conflicts.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433429
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792916214770
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792916674918
+      }
+    ],
+    "7.3 Write property tests for recipient-origin discovery and geospatial radius soundness.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433523
+      },
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792916691824
+      }
+    ],
+    "7.4 Add database integration and performance tests for spatial indexes, broad rural searches, eligibility filters, stable pagination, and stale locations.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433603
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917136382
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917154761
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917508926
+      }
+    ],
+    "8.1 Implement self/other booking commands, Recipient snapshots, Service Location snapshots, Quote Snapshots, Farmer-scoped idempotency, and booking-request outbox events.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433694
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917136550
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917518514
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917846651
+      }
+    ],
+    "8.2 Implement Owner accept/reject, Farmer/Owner cancellation policies, atomic interval reservation, optimistic version checks, and conflict responses.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433765
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917136703
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917867615
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918204256
+      }
+    ],
+    "8.3 Implement the complete booking transition table, actor permissions, status history, agreement-change versioning, expiry jobs, and configured notifications.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433843
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917136824
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918218086
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918617267
+      }
+    ],
+    "8.4 Write property tests for idempotent creation, no accepted overlap, adjacent intervals, and lifecycle safety.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861433924
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917136938
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918628038
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918782185
+      }
+    ],
+    "9.1 Build Farmer Home, search/filter results, Tractor cards, details, and adjustable-radius empty state using redacted discovery projections.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434032
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137069
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918793394
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792919157675
+      }
+    ],
+    "9.2 Build the resumable booking stepper for target, Recipient, Service Location, work/Equipment, schedule, pricing, and review.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434129
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137236
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792919171403
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792919563949
+      }
+    ],
+    "9.3 Build Farmer booking lists/details for pending, accepted, scheduled, active, completed, cancelled, disputed, invoice, and payment states.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434300
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137386
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792919574840
+      },
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792920697567
+      },
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792920918807
+      }
+    ],
+    "9.4 Add end-to-end and accessibility tests for self-booking and cross-city someone-else booking.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434395
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137569
+      },
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792920926011
+      },
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792921325616
+      }
+    ],
+    "10.1 Build the dashboard with the availability control first, summary cards, Tractor/Equipment/document shortcuts, requests, active jobs, earnings, and payment links.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434478
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137750
+      },
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792921333733
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921788962
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921800962
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792923841604
+      }
+    ],
+    "10.2 Build responsive Tractor, Equipment, documents, Pricing & Services, booking request, booking detail, and accepted-job screens.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434564
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917137884
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789053
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792923853135
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792924400313
+      }
+    ],
+    "10.3 Add end-to-end and accessibility tests for onboarding, eligibility, going online/offline, pricing, accepting/rejecting, and concurrent conflict feedback.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434650
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138034
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789116
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792924418735
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792924952904
+      }
+    ],
+    "11.1 Implement idempotent start/pause/resume/complete commands, ordered work-event validation, active-interval folding, per-acre/per-trip measurements, and append-only corrections.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434728
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138170
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789182
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792924966711
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792925628760
+      }
+    ],
+    "11.2 Implement proportional-minute and disclosed block rounding, per-acre and per-trip formulas, single-boundary minor-unit rounding, invoice trace persistence, and agreement-version linkage.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434801
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138329
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789252
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792925642390
+      },
+      {
+        "executionId": "ea87da77-51c8-4e78-8a8c-bfb3a4bf2f97",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792925712983
+      },
+      {
+        "executionId": "ea87da77-51c8-4e78-8a8c-bfb3a4bf2f97",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792926621567
+      }
+    ],
+    "11.3 Build Owner job controls/work-completion/invoice preview and Farmer active-job/final-bill/review/dispute screens.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434882
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138455
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789329
+      },
+      {
+        "executionId": "ea87da77-51c8-4e78-8a8c-bfb3a4bf2f97",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792926632983
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290483
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927299615
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792929229880
+      }
+    ],
+    "11.4 Write property tests for work-event accounting, proportional hourly billing, acre/trip billing, and correction history.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861434963
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138590
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789405
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290617
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792931205233
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792931630654
+      }
+    ],
+    "12.1 Implement payment and payment-event aggregates, invoice application rules, statuses, overpayment prevention, refunds state placeholders, and authorized receipt projection.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435085
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138701
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789465
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290682
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792931638533
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792934289424
+      }
+    ],
+    "12.2 Implement audited cash recording with recorder, timestamp, amount checks, Farmer/Owner views, and completion transition.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435160
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138817
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789518
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290749
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792934297435
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792935382679
+      }
+    ],
+    "12.3 Write property tests for invoice-payment conservation and payment-method integrity.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435229
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917138934
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789582
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290811
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792935383438
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792936160968
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937668267
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937682915
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792938231087
+      }
+    ],
+    "13.1 Configure service workers and caching rules for shell assets, public static assets, and translation catalogs while excluding tokens, private documents, payment responses, and sensitive booking data.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435314
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139046
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789646
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290878
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937668495
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792938243826
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792939990207
+      }
+    ],
+    "13.2 Implement freshness indicators, safe draft storage, explicit retry with stable idempotency keys, and no-silent-queue behavior for Authoritative Actions.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435387
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139149
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789701
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927290944
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937668621
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792939997118
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792942026206
+      }
+    ],
+    "13.3 Implement the outbox worker abstraction, notification records, retry/backoff, dead-letter handling, localized template contracts, and provider-independent delivery status.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435453
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139258
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789762
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291031
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937668805
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792942033207
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792944432078
+      }
+    ],
+    "13.4 Add PII-redacted structured logs, metrics, traces, correlation IDs, dashboards, and alerts for the defined operational indicators.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435530
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139360
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789816
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291095
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937668922
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792944439116
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792947877408
+      }
+    ],
+    "14.1 Build the Phase 1 landing page from the showcase with hero, how it works, services, Owner benefits, pricing, phone-booking capability state, languages, final CTA, and footer.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435604
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139456
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789868
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291165
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669024
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792947884958
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792949252947
+      }
+    ],
+    "14.2 Implement static/reduced-motion fallbacks and capability-aware copy that never displays a fabricated IVR number or unavailable provider as live.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435683
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139550
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921789966
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291231
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669115
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792949260822
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792950243368
+      }
+    ],
+    "14.3 Add responsive, accessibility, metadata, link, and web-vital tests for representative low-end mobile and desktop profiles.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435756
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139680
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790018
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291298
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669220
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792950256350
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792952571894
+      }
+    ],
+    "15.1 Complete end-to-end tests from OTP sandbox through Owner catalog, search, self/other booking, acceptance, work, invoice, dispute, cash record, history, and receipt.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435834
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139789
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790087
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291361
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669323
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792952580493
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792992479802
+      }
+    ],
+    "15.2 Execute security tests for OTP abuse, cross-role/object access, uploads, signed grants, injection, session revocation, location/contact exposure, booking races, invoice tampering, and PII-safe logs.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435910
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917139900
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790147
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291429
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669437
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792992479979
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792997476139
+      }
+    ],
+    "15.3 Run load and performance tests for indexed discovery, dashboard pagination, concurrent acceptance, API latency targets, responsive assets, and web vitals; tune and document the initial load profile.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861435982
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917140040
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790204
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291501
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669612
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792997476434
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1793006163038
+      }
+    ],
+    "15.4 Test additive migrations, seeded stable identifiers, backup restore, account deletion/anonymization, monitoring alerts, capability rollback, and production readiness checklist.": [
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790264
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291565
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669743
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1793006163994
+      },
+      {
+        "executionId": "d5faa312-d26a-4cd0-933c-b6116ab249f9",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1793011085781
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012437118
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012452740
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012897197
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012913307
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793017047797
+      }
+    ],
+    "16.1 Select and implement a payment adapter with sandbox/live capability gates, server-created intents, signed webhook verification, amount/currency/reference checks, immutable events, and provider-event deduplication.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917140315
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790328
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291632
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669849
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012437802
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012897292
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793017097677
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020693252
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020706068
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793022260353
+      }
+    ],
+    "16.2 Implement online receipt and refund flows, pending/failure recovery, reconciliation jobs, and authorized Farmer/Owner payment history.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861436201
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917140438
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790383
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291694
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937669953
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012438214
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012897651
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020694470
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793022268037
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793027620073
+      }
+    ],
+    "16.3 Write property tests for payment trust and provider-event deduplication.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861436291
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917140582
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790446
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291762
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670055
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012438699
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012897966
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020694947
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793027628160
+      },
+      {
+        "executionId": "5e84e84d-3dc8-4b34-8ac7-2e6b9da5d6a8",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793033416743
+      }
+    ],
+    "16.4 Integrate configured SMS/push adapters, consent-aware Owner contact sharing, booking/receipt templates, delivery telemetry, and degraded-provider recovery.": [
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790503
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291829
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670144
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012439081
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012898045
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695067
+      },
+      {
+        "executionId": "5e84e84d-3dc8-4b34-8ac7-2e6b9da5d6a8",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793033424448
+      },
+      {
+        "executionId": "c3b04391-bcb8-4f11-9e3b-6e71e05c602d",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793072546391
+      },
+      {
+        "executionId": "09db4e6f-03fe-4ffa-863c-93982427df5d",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793073168085
+      },
+      {
+        "executionId": "a0a858e9-4c95-4966-91fb-a86c8057d018",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793088962715
+      }
+    ],
+    "16.5 Build support/dispute resolution workflows and expand verified regional translations.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917140916
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790567
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291898
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670243
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012439382
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012898114
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695234
+      },
+      {
+        "executionId": "a0a858e9-4c95-4966-91fb-a86c8057d018",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793088968223
+      },
+      {
+        "executionId": "2b719167-1062-4185-b746-fa0bba23422e",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793092299438
+      },
+      {
+        "executionId": "c0aa11ab-225e-4a34-95c3-021583c27b51",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793093131756
+      }
+    ],
+    "16.6 Run provider contract, sandbox, security, failure-mode, reconciliation, rollback, and launch-readiness tests before enabling each live capability.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861436552
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141034
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790633
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927291964
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670350
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012439691
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012898364
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695318
+      },
+      {
+        "executionId": "fa803eb0-51e7-4e45-8b04-10ff13557f85",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793093186400
+      }
+    ],
+    "17.1 Select a telephony provider and configure an environment-specific dedicated number, signed callback validation, capability gates, call-session storage, and PII-safe call telemetry.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861436684
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141141
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790699
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292029
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670445
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012439815
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012898833
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695400
+      },
+      {
+        "executionId": "eb166713-f21b-4e49-a3d1-00ea34854afb",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793093270752
+      }
+    ],
+    "17.2 Implement versioned localized prompt trees for language, verification, saved/manual location, service, date/time, quantity, confirmation, and booking status.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141269
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790767
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292099
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670545
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012439927
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899323
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695471
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307098
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093313903
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093657119
+      }
+    ],
+    "17.3 Connect IVR commands to shared discovery, Quote Snapshot, booking, idempotency, status, and notification services.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141401
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790834
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292163
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670656
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440008
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899645
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695583
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307235
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093664051
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793100852538
+      }
+    ],
+    "17.4 Add transcript-driven integration tests for all languages, invalid digits, retries/timeouts, identity failure, no-result search, duplicate submission, assisted fallback, confirmation, and cross-channel visibility.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861436961
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141503
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790909
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292230
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670766
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440091
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899721
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695739
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307325
+      },
+      {
+        "executionId": "a0a81b0e-9dff-4243-af00-686fda4e608c",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793100907254
+      }
+    ],
+    "17.5 Complete telephony security, reliability, operational, rollback, and end-to-end readiness checks before exposing the number.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861437038
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141618
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921790971
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292297
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937670890
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440205
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899813
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695814
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307414
+      },
+      {
+        "executionId": "362cf420-1abd-4f66-90bb-a97f5a240a26",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793100971390
+      }
+    ],
+    "18.1 Implement a separately lazy-loaded tractor scene with compressed model/textures, scroll-linked subtle motion, timeout handling, and a static poster fallback.": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792861437122
+      },
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141748
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791033
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292364
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671021
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440336
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899899
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695895
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307498
+      },
+      {
+        "executionId": "a04825a0-e6bb-4536-9228-0ce335b6053c",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793101042000
+      }
+    ],
+    "18.2 Implement capability checks for reduced motion, data saver, device memory/GPU confidence, disabled scripting, and load failure.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917141901
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791098
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292430
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671136
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440415
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012899975
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020695974
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307586
+      },
+      {
+        "executionId": "aa1e78fd-fcf6-4ec5-ba31-1ab24018efd4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793101111537
+      },
+      {
+        "executionId": "aa1e78fd-fcf6-4ec5-ba31-1ab24018efd4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793101375893
+      }
+    ],
+    "18.3 Write property tests for 3D independence.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917142022
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791150
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292498
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671232
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440480
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900058
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696053
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307722
+      },
+      {
+        "executionId": "aa1e78fd-fcf6-4ec5-ba31-1ab24018efd4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793101387585
+      },
+      {
+        "executionId": "aa1e78fd-fcf6-4ec5-ba31-1ab24018efd4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793101529656
+      }
+    ],
+    "18.4 Enforce the compressed model and web-vital budgets in continuous integration and measure fallback rate in production telemetry.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917142154
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791214
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292574
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671328
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440554
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900126
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696125
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307811
+      },
+      {
+        "executionId": "faa7983b-b591-428f-8bf9-8f91ff284858",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793102033568
+      },
+      {
+        "executionId": "faa7983b-b591-428f-8bf9-8f91ff284858",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793103105270
+      }
+    ],
+    "19.1 Add provider-backed map enhancements and advanced search only through existing location/discovery contracts and capability states.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917142288
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791267
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292636
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671431
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440627
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900194
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696194
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093307936
+      },
+      {
+        "executionId": "faa7983b-b591-428f-8bf9-8f91ff284858",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793102052634
+      },
+      {
+        "executionId": "faa7983b-b591-428f-8bf9-8f91ff284858",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793103098534
+      }
+    ],
+    "19.2 Add privacy-reviewed product analytics and advanced Owner earnings reports derived from existing invoice/payment records.": [
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292754
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671544
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440805
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900265
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696261
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093308029
+      },
+      {
+        "executionId": "d03dcf06-83ce-4042-bf9a-0df86e5e9d50",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793103157619
+      },
+      {
+        "executionId": "e4e5bd50-0b46-49b2-bac3-f190f915fc83",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793111164006
+      },
+      {
+        "executionId": "03cfa2ad-90da-4ad6-b4a9-70e9ae255bac",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793111387326
+      },
+      {
+        "executionId": "03cfa2ad-90da-4ad6-b4a9-70e9ae255bac",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793111882592
+      }
+    ],
+    "19.3 Expand languages and execute full regression, accessibility, property, performance, security, migration, backup, and provider readiness suites.": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917142518
+      },
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791437
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292834
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671660
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440881
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900341
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696333
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093308115
+      },
+      {
+        "executionId": "03cfa2ad-90da-4ad6-b4a9-70e9ae255bac",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793111895605
+      },
+      {
+        "executionId": "03cfa2ad-90da-4ad6-b4a9-70e9ae255bac",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793112732778
+      }
+    ],
+    "19.4 Document extraction criteria for future modules and prove that versioned contracts, outbox delivery, reconciliation, and rollback preserve booking/invoice/payment invariants before any service split.": [
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792921791495
+      },
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792927292900
+      },
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792937671775
+      },
+      {
+        "executionId": "558def83-9bd4-4d0e-8788-d50b4eb3d6f1",
+        "chatSessionId": "sess_3cf3949d-4036-46fd-a1ec-3684fd34574f",
+        "timestamp": 1793012440947
+      },
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793012900414
+      },
+      {
+        "executionId": "8aa6036e-3a9d-4df2-a846-d1cdb625a1a0",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793020696400
+      },
+      {
+        "executionId": "5da57b3f-352c-404c-8540-06d8e55034b4",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793093308188
+      },
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793112781738
+      },
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793112793926
+      },
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793113087204
+      }
+    ],
+    "1. Establish the workspace, shared contracts, and capability model": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792862593852
+      }
+    ],
+    "2. Build the relational, geospatial, and audit persistence foundation": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792863908299
+      }
+    ],
+    "3. Implement OTP identity, sessions, and default-deny authorization": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792865183558
+      }
+    ],
+    "4. Create the localization, accessible design system, and role-aware client shell": [
+      {
+        "executionId": "84eff08c-9fbd-45c6-a5d1-0d13a924b969",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792867525727
+      }
+    ],
+    "5. Implement Owner onboarding, Tractor catalog, Equipment, and private documents": [
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792912686571
+      }
+    ],
+    "6. Implement service-specific pricing and operational availability": [
+      {
+        "executionId": "7071887a-e8d9-4f76-85e9-719527f56170",
+        "chatSessionId": "sess_7c9098bf-a3c4-4fa8-bcf1-791ef7c01cba",
+        "timestamp": 1792915339370
+      }
+    ],
+    "7. Implement Service Location capture and geospatial discovery": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792917509104
+      }
+    ],
+    "8. Implement the booking aggregate and concurrency-safe lifecycle": [
+      {
+        "executionId": "71f6bde5-eb72-44a5-889b-ae3f0d862872",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792918782250
+      }
+    ],
+    "9. Build the Farmer search and booking experience": [
+      {
+        "executionId": "7aea17bb-dcb6-44d3-9fb2-89c92c97a9c8",
+        "chatSessionId": "sess_89f939bf-b4a0-4bac-aab7-938309c5a32e",
+        "timestamp": 1792921325720
+      }
+    ],
+    "10. Build the Owner dashboard and booking-management experience": [
+      {
+        "executionId": "99daf189-8698-430c-b972-154910e5d28e",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792924953013
+      }
+    ],
+    "11. Implement job tracking, reproducible billing, and disputes": [
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792931630735
+      }
+    ],
+    "12. Implement core payment records and audited cash settlement": [
+      {
+        "executionId": "bda29e88-b49c-4e78-879d-c75ca945b20c",
+        "chatSessionId": "sess_4bd5aa43-ee7d-4883-a130-7c2591f6e872",
+        "timestamp": 1792936161075
+      }
+    ],
+    "13. Implement safe PWA connectivity, outbox processing, and operational telemetry": [
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792947877500
+      }
+    ],
+    "14. Deliver the accessible static public landing experience": [
+      {
+        "executionId": "54003d39-efaf-40dd-a9aa-305692e971ae",
+        "chatSessionId": "sess_eb42ab3d-579c-4023-a1c9-df503fcf775d",
+        "timestamp": 1792952572092
+      }
+    ],
+    "15. Harden and release the Phase 1 vertical slice": [
+      {
+        "executionId": "c614679b-73cf-45c2-87ab-16b39128f299",
+        "chatSessionId": "sess_338c2528-831f-47a8-a1c6-675b117ade89",
+        "timestamp": 1793017048313
+      }
+    ],
+    "19. Add advanced discovery, analytics, reporting, and scale safeguards": [
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793113087318
+      }
+    ],
+    "16. Integrate verified online payments, communications, and support": [
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793113114226
+      }
+    ],
+    "17. Integrate the IVR channel through the shared domain": [
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793113120437
+      }
+    ],
+    "18. Add progressive 3D without coupling it to booking": [
+      {
+        "executionId": "9696e4dd-f9dc-46dd-8226-f95b3b30deaa",
+        "chatSessionId": "sess_fdd15f6d-488f-4f3c-93b0-f7faf324552c",
+        "timestamp": 1793113126487
+      }
+    ]
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "name": "@kisantractor/observability",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./web-vitals": {
+      "types": "./dist/web-vitals.d.ts",
+      "default": "./dist/web-vitals.js"
+    },
+    "./product-analytics": {
+      "types": "./dist/product-analytics.d.ts",
+      "default": "./dist/product-analytics.js"
+    },
+    "./landing-3d": {
+      "types": "./dist/landing-3d.d.ts",
+      "default": "./dist/landing-3d.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "dependencies": {
+    "@kisantractor/domain": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}

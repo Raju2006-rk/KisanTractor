@@ -12,6 +12,8 @@ A pnpm TypeScript monorepo for the responsive web/PWA and shared modular-monolit
 - `packages/i18n` — locale catalogs for English, Hindi, Telugu, Kannada, and Tamil.
 - `packages/config` — validated local, test, staging, and production configuration.
 - `packages/test-utils` — shared deterministic test fixtures and utilities.
+- `packages/observability` — PII-redacted structured logs, metric catalog, tracing, and correlation IDs.
+- `ops/` — dashboard and alert definitions (not deployed) and runbooks; see `ops/observability/README.md`.
 
 Package boundaries are intentionally present before their owning feature tasks add behavior. Provider capability behavior is not implemented in task 1.1.
 
@@ -35,3 +37,8 @@ corepack pnpm build
 ```
 
 For a deployed process, supply `APP_ENV=staging` or `APP_ENV=production` with the corresponding variables. Local API and web development can be started with `pnpm dev`.
+
+## Release operations
+
+- `corepack pnpm --filter @kisantractor/api db <migrate|status|seed-reference-data|verify|drill>` runs the roll-forward migrator, reference-data seed, integrity checks, and backup-restore drill (`ops/runbooks/backup-restore.md`).
+- `corepack pnpm release:check` evaluates `ops/release/readiness.json` for a production release and exits non-zero while any blocking gate or LIVE capability check is pending (`ops/release/production-readiness.md`).

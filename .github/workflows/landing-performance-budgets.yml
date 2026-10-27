@@ -1,0 +1,39 @@
+name: Landing performance budgets
+
+on:
+  pull_request:
+    paths:
+      - "apps/web/**"
+      - "packages/observability/**"
+      - "package.json"
+      - "pnpm-lock.yaml"
+      - ".github/workflows/landing-performance-budgets.yml"
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  landing-budgets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      CI: "true"
+      KT_REQUIRE_BROWSER: "1"
+      KT_LAB_RUNS: "5"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+      - name: Enable pinned package manager
+        run: corepack enable && corepack install
+      - name: Install dependencies
+        run: corepack pnpm install --frozen-lockfile
+      - name: Enforce compressed 3D payload budget
+        run: corepack pnpm --filter @kisantractor/web test:budgets
+      - name: Build web application and workspace dependencies
+        run: corepack pnpm --filter @kisantractor/web... build
+      - name: Enforce representative-mobile web-vital budgets
+        run: corepack pnpm --filter @kisantractor/web test:landing

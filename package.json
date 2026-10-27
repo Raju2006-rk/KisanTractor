@@ -1,0 +1,33 @@
+{
+  "name": "kisantractor-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "KisanTractor responsive marketplace platform",
+  "packageManager": "pnpm@12.15.0",
+  "engines": {
+    "node": "24.14.1",
+    "pnpm": "12.15.0"
+  },
+  "scripts": {
+    "build": "corepack pnpm --recursive --if-present build",
+    "typecheck": "corepack pnpm --filter ./packages/** --if-present build && corepack pnpm --recursive --if-present typecheck",
+    "test": "vitest run",
+    "test:unit": "vitest run --exclude **/*.property.test.ts",
+    "test:e2e": "vitest run apps/api/src/e2e",
+    "test:load": "vitest run apps/api/src/performance/load.performance.test.ts",
+    "config:check": "corepack pnpm --filter @kisantractor/config env:check",
+    "release:check": "corepack pnpm --filter @kisantractor/config release:check",
+    "test:release": "vitest run apps/api/src/release packages/database packages/observability packages/config",
+    "dev": "corepack pnpm --filter @kisantractor/config build && corepack pnpm --parallel --filter @kisantractor/web --filter @kisantractor/api dev"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/pg": "8.15.5",
+    "fast-check": "4.10.2",
+    "pg": "8.16.3",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3",
+    "vitest": "5.0.5"
+  }
+}
