@@ -1,4 +1,4 @@
-import { validateEnvironment, type EnvironmentConfig } from "@kisantractor/config";
+﻿import { validateEnvironment, type EnvironmentConfig } from "@kisantractor/config";
 import { writeAuditEvent, type SqlPool } from "@kisantractor/database";
 import type { Telemetry } from "@kisantractor/observability";
 import {
@@ -122,6 +122,7 @@ import {
 import {
   buildCapabilityRegistry,
   buildIdentityRuntimeConfig,
+  buildMapGeocodingAdapter,
   buildOnlinePaymentAdapter,
   loadMessagingProviderSecrets,
   loadPaymentProviderSecrets,
@@ -249,8 +250,10 @@ export class AppModule {
             () => directory,
             overrides.messagingProviderHttp === undefined ? {} : { http: overrides.messagingProviderHttp },
           );
+          // A test-provided maps handle wins; otherwise build one from configuration (Nominatim).
+          const maps = overrides.mapsProvider ?? buildMapGeocodingAdapter(config);
           return buildCapabilityRegistry(config, overrides.sandboxProviders, {
-            ...(overrides.mapsProvider === undefined ? {} : { MAPS_GEOCODING: overrides.mapsProvider }),
+            ...(maps === undefined ? {} : { MAPS_GEOCODING: maps }),
             ...(onlinePayment === undefined ? {} : { ONLINE_PAYMENT: onlinePayment }),
             ...(messaging === undefined ? {} : { MESSAGING: messaging }),
           });

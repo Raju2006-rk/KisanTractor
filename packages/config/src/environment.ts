@@ -1,4 +1,4 @@
-import {
+﻿import {
   capabilityStates,
   projectCapabilityStates,
   type CapabilityState,
@@ -67,6 +67,22 @@ const razorpayKeyIdSchema = z
 const paymentProviderEnvironmentShape = {
   PAYMENT_PROVIDER: z.enum(paymentProviderValues),
   RAZORPAY_KEY_ID: razorpayKeyIdSchema,
+};
+
+/** Map/geocoding adapter. `nominatim` uses OpenStreetMap's keyless public service. */
+export const mapsProviderValues = ["none", "nominatim"] as const;
+export type MapsProviderName = (typeof mapsProviderValues)[number];
+
+const mapsUserAgentSchema = z
+  .string()
+  .trim()
+  .transform((value) => (value ? value : undefined))
+  .optional();
+
+const mapsProviderEnvironmentShape = {
+  MAPS_PROVIDER: z.enum(mapsProviderValues),
+  /** Contact identifier for Nominatim's usage policy, e.g. "KisanTractor (ops@example.com)". */
+  MAPS_USER_AGENT: mapsUserAgentSchema,
 };
 
 /** SMS adapter. `msg91` sends DLT-registered templates through the MSG91 Flow API. */
@@ -165,6 +181,7 @@ const commonEnvironmentShape = {
   ENABLE_PWA: booleanTextSchema,
   ...capabilityEnvironmentShape,
   ...paymentProviderEnvironmentShape,
+  ...mapsProviderEnvironmentShape,
   ...messagingProviderEnvironmentShape,
   ...providerSafetyEnvironmentShape,
 };
@@ -212,9 +229,48 @@ function validateMessagingProviders(value: MessagingProviderFields, context: z.R
   }
 }
 
-function validateProviders(value: PaymentProviderFields & MessagingProviderFields, context: z.RefinementCtx): void {
+function validateProviders(
+  value: PaymentProviderFields & MessagingProviderFields & MapsProviderFields,
+  context: z.RefinementCtx,
+): void {
   validatePaymentProvider(value, context);
   validateMessagingProviders(value, context);
+  validateMapsProvider(value, context);
+}
+
+interface MapsProviderFields {
+  readonly APP_ENV: DeploymentEnvironment;
+  readonly MAPS_PROVIDER: MapsProviderName;
+  readonly MAPS_USER_AGENT?: string | undefined;
+  readonly MAPS_CAPABILITY_STATE: CapabilityState;
+}
+
+/**
+ * The keyless Nominatim provider still obeys the capability state's mode: SANDBOX is refused in
+ * production, LIVE in local and test. Its usage policy requires a contact User-Agent whenever the
+ * capability is active (Requirements 7.1, 7.7, 14.3, 14.5).
+ */
+function validateMapsProvider(value: MapsProviderFields, context: z.RefinementCtx): void {
+  if (value.MAPS_PROVIDER !== "nominatim") return;
+  const active = value.MAPS_CAPABILITY_STATE === "SANDBOX" || value.MAPS_CAPABILITY_STATE === "LIVE";
+  if (active && value.MAPS_USER_AGENT === undefined) {
+    context.addIssue({
+      code: "custom", path: ["MAPS_USER_AGENT"],
+      message: "is required when MAPS_PROVIDER is nominatim and the capability is SANDBOX or LIVE",
+    });
+  }
+  if (value.MAPS_CAPABILITY_STATE === "SANDBOX" && value.APP_ENV === "production") {
+    context.addIssue({
+      code: "custom", path: ["MAPS_CAPABILITY_STATE"],
+      message: "SANDBOX maps are development-only and must not run in production",
+    });
+  }
+  if (value.MAPS_CAPABILITY_STATE === "LIVE" && (value.APP_ENV === "local" || value.APP_ENV === "test")) {
+    context.addIssue({
+      code: "custom", path: ["MAPS_CAPABILITY_STATE"],
+      message: "LIVE maps are allowed only in staging or production",
+    });
+  }
 }
 
 interface PaymentProviderFields {
@@ -378,6 +434,7 @@ const providerDefaults = {
   STORAGE_CAPABILITY_STATE: "UNCONFIGURED",
   TELEPHONY_CAPABILITY_STATE: "UNCONFIGURED",
   PAYMENT_PROVIDER: "none",
+  MAPS_PROVIDER: "none",
   SMS_PROVIDER: "none",
   PUSH_PROVIDER: "none",
   ENABLE_OWNER_CONTACT_SHARING: "false",

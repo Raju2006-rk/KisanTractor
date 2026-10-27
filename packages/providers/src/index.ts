@@ -1,4 +1,4 @@
-export {
+﻿export {
   assertProviderRuntimeSafety,
   CapabilityRegistry,
   CapabilityUnavailableError,
@@ -10,6 +10,18 @@ export {
 } from "./capability-registry.js";
 export { LocalDevelopmentOtpAdapter } from "./otp.js";
 export { ProviderGatedMapsAdapter } from "./maps-geocoding.js";
+export {
+  fetchMapsHttpClient,
+  NOMINATIM_API_BASE_URL,
+  NOMINATIM_PROVIDER,
+  NominatimMapsAdapter,
+} from "./nominatim-maps-adapter.js";
+export type {
+  MapsHttpClient,
+  MapsHttpRequest,
+  MapsHttpResponse,
+  NominatimMapsAdapterOptions,
+} from "./nominatim-maps-adapter.js";
 export type {
   ConfiguredMapGeocodingProvider,
   MapAddress,

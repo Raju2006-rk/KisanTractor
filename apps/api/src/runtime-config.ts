@@ -1,4 +1,4 @@
-import { Buffer } from "node:buffer";
+﻿import { Buffer } from "node:buffer";
 import type { EnvironmentConfig } from "@kisantractor/config";
 import {
   CapabilityRegistry,
@@ -6,11 +6,13 @@ import {
   LocalDevelopmentOtpAdapter,
   MessagingChannelRouter,
   Msg91SmsAdapter,
+  NominatimMapsAdapter,
   RazorpayPaymentAdapter,
   type CapabilityRegistration,
   type CapabilityRegistrations,
   type CapabilityState,
   type ConfiguredMapGeocodingProvider,
+  type MapsHttpClient,
   type MessagingHttpClient,
   type ModalNotificationChannelAdapter,
   type OnlinePaymentProviderAdapter,
@@ -243,6 +245,43 @@ export function buildMessagingAdapter(
     }));
   }
   return new MessagingChannelRouter(adapters);
+}
+
+export interface MapGeocodingAdapterOptions {
+  /** Injectable HTTP client; contract tests use it so no request reaches the public service. */
+  readonly http?: MapsHttpClient;
+  readonly apiBaseUrl?: string;
+}
+
+const configuredMapsProvider = (config: Readonly<EnvironmentConfig>): "none" | "nominatim" =>
+  // Hand-built test configs may omit the field; absent means no provider.
+  config.MAPS_PROVIDER ?? "none";
+
+/**
+ * Builds the configured map/geocoding adapter, or undefined when MAPS_PROVIDER is `none` or the
+ * capability is not SANDBOX/LIVE. Nominatim needs no secret, only a contact User-Agent that
+ * configuration already requires while the capability is active.
+ */
+export function buildMapGeocodingAdapter(
+  config: Readonly<EnvironmentConfig>,
+  options: MapGeocodingAdapterOptions = {},
+): ConfiguredMapGeocodingProvider | undefined {
+  if (configuredMapsProvider(config) !== "nominatim") return undefined;
+  const state = config.MAPS_CAPABILITY_STATE as CapabilityState;
+  if (state !== "SANDBOX" && state !== "LIVE") return undefined;
+  if (state === "SANDBOX" && config.APP_ENV === "production") return undefined;
+  if (state === "LIVE" && (config.APP_ENV === "local" || config.APP_ENV === "test")) return undefined;
+  const userAgent = config.MAPS_USER_AGENT;
+  if (userAgent === undefined) {
+    throw new Error("MAPS_PROVIDER=nominatim requires MAPS_USER_AGENT while the capability is SANDBOX or LIVE");
+  }
+  return new NominatimMapsAdapter({
+    environment: config.APP_ENV,
+    mode: state,
+    userAgent,
+    ...(options.http === undefined ? {} : { http: options.http }),
+    ...(options.apiBaseUrl === undefined ? {} : { apiBaseUrl: options.apiBaseUrl }),
+  });
 }
 
 /** Real provider adapters built from configuration and secrets (not test doubles). */
