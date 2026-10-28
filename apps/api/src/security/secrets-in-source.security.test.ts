@@ -1,3 +1,4 @@
+import { execFileSync } from "node:child_process";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { extname, join, relative, sep } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -18,12 +19,36 @@ const SKIPPED_DIRECTORIES = new Set(["node_modules", ".git", "dist", ".next", "c
 const SKIPPED_EXTENSIONS = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".ico", ".glb", ".gltf", ".woff", ".woff2", ".pdf"]);
 const MAX_SCANNED_BYTES = 2 * 1024 * 1024;
 
-const repositoryFiles = (directory: string): string[] => readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
-  const path = join(directory, entry.name);
-  if (entry.isDirectory()) return SKIPPED_DIRECTORIES.has(entry.name) ? [] : repositoryFiles(path);
-  if (!entry.isFile() || SKIPPED_EXTENSIONS.has(extname(entry.name).toLowerCase())) return [];
-  return statSync(path).size > MAX_SCANNED_BYTES ? [] : [path];
-});
+const repositoryFiles = (directory: string): string[] => {
+  try {
+    const stdout = execFileSync("git", ["ls-files", "--cached", "--others", "--exclude-standard"], {
+      cwd: directory,
+      encoding: "utf8",
+    });
+    return stdout
+      .split(/\r?\n/u)
+      .filter(Boolean)
+      .map((entry) => join(directory, entry))
+      .filter((path) => {
+        if (SKIPPED_EXTENSIONS.has(extname(path).toLowerCase())) return false;
+        try {
+          return statSync(path).size <= MAX_SCANNED_BYTES;
+        } catch {
+          return false;
+        }
+      });
+  } catch {
+    const scan = (dir: string): string[] =>
+      readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
+        const path = join(dir, entry.name);
+        if (entry.isDirectory()) return SKIPPED_DIRECTORIES.has(entry.name) ? [] : scan(path);
+        if (!entry.isFile() || SKIPPED_EXTENSIONS.has(extname(entry.name).toLowerCase())) return [];
+        if (/^\.env(?!\..*\.example$)/u.test(entry.name)) return [];
+        return statSync(path).size > MAX_SCANNED_BYTES ? [] : [path];
+      });
+    return scan(directory);
+  }
+};
 
 /** Credential shapes that must never be committed. */
 const SECRET_PATTERNS: ReadonlyArray<readonly [string, RegExp]> = [

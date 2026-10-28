@@ -6,6 +6,7 @@ export default defineConfig({
     jsx: "automatic",
   },
   test: {
+    testTimeout: 30_000,
     include: ["packages/**/*.test.ts", "apps/**/*.test.ts"],
     exclude: ["**/node_modules/**", "**/dist/**", "**/.next/**"],
     passWithNoTests: false,

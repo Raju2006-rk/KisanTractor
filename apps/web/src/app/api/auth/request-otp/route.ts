@@ -31,11 +31,17 @@ export async function POST(request: Request) {
         locale: typeof locale === "string" ? locale : "en",
       }),
     });
-    const body = (await response.json()) as { challengeId?: unknown };
+    const body = (await response.json()) as { challengeId?: unknown; developmentCode?: unknown };
     if (!response.ok || typeof body.challengeId !== "string") {
       return redirectTo(request, `/login?role=${role}&error=request-failed`);
     }
     const query = new URLSearchParams({ challengeId: body.challengeId, role });
+    if (typeof phone === "string" && phone.trim()) {
+      query.set("phone", phone.trim());
+    }
+    if (typeof body.developmentCode === "string") {
+      query.set("devCode", body.developmentCode);
+    }
     return redirectTo(request, `/login/verify?${query.toString()}`);
   } catch {
     return redirectTo(request, `/login?role=${role}&error=request-failed`);

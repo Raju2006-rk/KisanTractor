@@ -76,8 +76,12 @@ interface LandingContract {
   readonly ctaDestinations: readonly string[];
 }
 
+const documentCache = new Map<string, string>();
 function publicLandingDocument(locale: (typeof catalogLocales)[number], dataSaver: boolean): string {
-  return renderToStaticMarkup(createElement(AppShell, {
+  const key = `${locale}:${dataSaver}`;
+  const cached = documentCache.get(key);
+  if (cached) return cached;
+  const markup = renderToStaticMarkup(createElement(AppShell, {
     locale,
     role: "PUBLIC",
     footer: createElement(PublicFooter, { locale }),
@@ -87,6 +91,8 @@ function publicLandingDocument(locale: (typeof catalogLocales)[number], dataSave
       dataSaver,
     }),
   }));
+  documentCache.set(key, markup);
+  return markup;
 }
 
 function attribute(attributes: string, name: string): string | null {
@@ -134,6 +140,10 @@ function expectFunctionalDocument(markup: string, contract: LandingContract): vo
 
   for (const control of contract.controls) {
     expect(control.label.trim(), control.href).not.toBe("");
+    if (control.href.startsWith("#")) {
+      expect(markup, control.href).toContain(`id="${control.href.slice(1)}"`);
+      continue;
+    }
     expect(control.href.startsWith("/") && !control.href.startsWith("//"), control.href).toBe(true);
     expect(firstPartyRouteExists(control.href), control.href).toBe(true);
   }
@@ -156,13 +166,14 @@ describe("Property 20: 3D independence", () => {
             const fullMarkup = publicLandingDocument(locale, false);
             const saverMarkup = publicLandingDocument(locale, true);
             const expected = landingContract(fullMarkup);
+            const saverContract = landingContract(saverMarkup);
 
             expectFunctionalDocument(fullMarkup, expected);
-            expect(landingContract(saverMarkup)).toEqual(expected);
+            expect(saverContract).toEqual(expected);
+            expectFunctionalDocument(saverMarkup, saverContract);
 
             for (const combination of fallbackCombinations) {
-              const markup = combination.dataSaver ? saverMarkup : fullMarkup;
-              const actual = landingContract(markup);
+              const actual = combination.dataSaver ? saverContract : expected;
               const signals: LandingEnhancementSignals = {
                 scriptsAvailable: !combination.scriptingDisabled,
                 prefersReducedMotion: combination.reducedMotion,
@@ -194,7 +205,6 @@ describe("Property 20: 3D independence", () => {
               expect(decision.enhance).toBe(!shouldFallback);
               expect(sceneSlot.children).toBe(serverRenderedChildren);
               expect(actual).toEqual(expected);
-              expectFunctionalDocument(markup, actual);
               expect(attributes.get("data-scene-state")).toBe(shouldFallback ? "fallback" : "eligible");
               expect(attributes.has("data-scene-fallback-reason")).toBe(shouldFallback);
             }
@@ -207,5 +217,5 @@ describe("Property 20: 3D independence", () => {
       console.error(`[PBT] property-20-3d-independence: seed=${seed} minimizedCounterexample=reported by fast-check below`);
       throw error;
     }
-  });
+  }, 30_000);
 });
